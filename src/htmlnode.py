@@ -10,8 +10,10 @@ class HTMLNode:
   
   def add_props_to_html(self):
     props = ""
-    for prop in self.props:
-      props += f" {prop[0]}={prop[1]}"
+
+    if self.props is not None:
+      for attr in self.props:
+        props += f" {attr}=\"{self.props[attr]}\""
     
     return props
   
