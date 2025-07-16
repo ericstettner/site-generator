@@ -22,8 +22,8 @@ class TestTextNode(unittest.TestCase):
     self.assertNotEqual(node, node2)
 
   def test_link_not_eq(self):
-    node = TextNode("This is a text node", TextType.LINK, "https://boot.dev")
-    node2 = TextNode("this is a text node", TextType.LINK)
+    node = TextNode("This is a text node", TextType.LINK)
+    node2 = TextNode("this is a text node", TextType.LINK, "https://boot.dev")
 
     self.assertNotEqual(node, node2)
 
