@@ -1,23 +1,14 @@
-from textnode import TextType, TextNode, split_nodes_delimiter
+from textnode import TextType, TextNode, split_nodes_delimiter, extract_markdown_images, extract_markdown_links, split_nodes_image
 from htmlnode import HTMLNode, LeafNode
 from parentnode import ParentNode
 
 def main():
-  node = TextNode("test1", TextType.LINK, "https://boot.dev")
-  node2 = HTMLNode("p", "HTML Node", [], {"class": "test"})
-  node3 = LeafNode("a", "Click me!", {"href": "https://boot.dev"})
-  node4 = ParentNode(
-    "p",
-    [
-        LeafNode("b", "Bold text"),
-        LeafNode(None, "Normal text"),
-        LeafNode("i", "italic text"),
-        LeafNode(None, "Normal text"),
-    ],
+  node = TextNode(
+      "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
+      TextType.TEXT,
   )
-
-  node5 = TextNode("This is text with a `code block` word", TextType.TEXT)
-  new_nodes = split_nodes_delimiter([node5], "`", TextType.CODE)
+  new_nodes = split_nodes_image([node])
+  print(new_nodes)
 
 if __name__ == "__main__":
   main()
